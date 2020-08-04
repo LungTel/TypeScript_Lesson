@@ -1,0 +1,10 @@
+
+npx create-react-app . --typescript
+
+vscodeのインストール
+prettier install 
+
+es7 install
+
+設定からsave検索
+Format on Saveにチェック
