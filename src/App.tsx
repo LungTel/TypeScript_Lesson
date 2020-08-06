@@ -126,6 +126,55 @@ let funccomp2 = (x: string) => {};
 // NG funccomp1 = funccomp2
 // NG funccomp2 = funccomp1
 
+//Generics
+interface GEN<T> {
+  item: T;
+}
+
+const gen0: GEN<string> = { item: "hello" };
+
+const gen1: GEN<number> = { item: 2 };
+
+interface GEN1<T = string> {
+  item: T;
+}
+
+const gen3: GEN1 = { item: "hello" };
+
+interface GEN2<T extends string | number> {
+  item: T;
+}
+
+const gen4: GEN2<number> = { item: 2 };
+
+function funcGen<T>(props: T) {
+  return { item: props };
+}
+
+const gen6 = funcGen<string>("test");
+const gen7 = funcGen<string | null>(null);
+
+function funcGen1<T extends string | null>(props: T) {
+  return { value: props };
+}
+
+const gen8 = funcGen1("hello");
+const gen9 = funcGen1(null);
+
+interface Props {
+  price: number;
+}
+
+function funcGen3<T extends Props>(props: T) {
+  return { value: props.price };
+}
+
+const gen10 = funcGen3({ price: 10 });
+
+const funcGen4 = <T extends Props>(props: T) => {
+  return { value: props.price };
+};
+
 function App() {
   return (
     <div className="App">
